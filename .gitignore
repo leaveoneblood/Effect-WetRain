@@ -1,0 +1,93 @@
+#include <iostream>
+#include <list>
+
+using namespace std;
+void main()
+{
+	list<int> *ls = new list<int>();
+
+	ls->push_back(1);
+	ls->push_back(2);
+
+	ls->push_back(3);
+	ls->push_back(4);
+
+
+	ls->push_back(5);
+
+
+//	ls->push_front(6);
+	//ls->push_back(9);
+
+//	ls->front() = 22;
+
+	//cout << ls->front()<<"  " << ls->back() << endl;
+
+
+	for (list<int>::iterator it = ls->begin(); it != ls->end();it++)//正向迭代
+	{
+		std::cout << *it << "\t";
+
+	}
+	cout << endl;
+
+	for (list<int>::reverse_iterator rit = ls->rbegin(); rit != ls->rend();rit++)//反向迭代
+	{
+		std::cout << *rit << "\t";
+	}
+	cout << endl;
+
+	list<int> lsnew(*ls);//构造函数
+	cout << lsnew.front() << endl;
+
+	list<double> tedblist(5,9);
+	list<double> dblist(tedblist.begin(),tedblist.end());//这个拷贝都是左闭右开
+	
+	for (list<double>::iterator ir = dblist.begin(); ir != dblist.end(); ir++)
+	{
+		cout << *ir << "\t";
+
+	}
+	cout << endl;
+
+	list<double>  listA, listB;
+
+	listA.assign(dblist.begin(), dblist.end());
+
+		cout << listA.front()<<endl;
+
+		listA.assign(3,1);
+		for (list<double>::iterator ir = listA.begin(); ir != listA.end(); ir++)
+		{
+			cout << *ir << "\t";
+
+		}
+		//listA = dblist;
+		//for (list<double>::iterator ir = listA.begin(); ir != listA.end(); ir++)
+		//{
+		//	cout << *ir << "\t";
+
+		//}
+
+		dblist.swap(listA);
+
+		for (list<double>::iterator ir = listA.begin(); ir != listA.end(); ir++)
+		{
+			cout << *ir << "\t";
+
+		}
+
+		cout << endl;
+
+		listA.resize(10,3);//设置大小 如果长度长于它  则以3填充  如果短于它  则后面的直接删除
+
+		for (list<double>::iterator ir = listA.begin(); ir != listA.end(); ir++)
+		{
+			cout << *ir << "\t";
+
+		}
+
+		cout << endl << listA.size()<<endl;
+
+	system("pause");
+}
